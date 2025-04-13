@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rudra 💖 Swastika</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #ffc0cb, #ffb6c1, #ff69b4);
+      font-family: 'Great Vibes', cursive;
+      overflow: hidden;
+    }
+
+    .center-text {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: #fff;
+      font-size: 3.5rem;
+      text-shadow: 0 0 10px #ff69b4, 0 0 20px #ff69b4;
+      animation: fadeIn 3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.8) translate(-50%, -50%);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) translate(-50%, -50%);
+      }
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background: #ff69b4;
+      transform: rotate(45deg);
+      animation: float 8s infinite ease-in-out;
+      opacity: 0.7;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background: #ff69b4;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -25px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -25px;
+      top: 0;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) rotate(45deg);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) rotate(45deg);
+        opacity: 0;
+      }
+    }
+
+    /* Love arrow */
+    .arrow {
+      position: absolute;
+      width: 100px;
+      height: 5px;
+      background: #ff1493;
+      top: 50%;
+      left: 0;
+      animation: shoot 5s infinite ease-in;
+      transform-origin: left center;
+    }
+
+    .arrow::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: -5px;
+      width: 0;
+      height: 0;
+      border-left: 15px solid #ff1493;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+    }
+
+    @keyframes shoot {
+      0% {
+        left: -100px;
+        opacity: 0;
+      }
+      20% {
+        opacity: 1;
+      }
+      100% {
+        left: 100%;
+        opacity: 0;
+      }
+    }
+
+    /* Heart Rain */
+    .rain-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .rain-heart {
+      position: absolute;
+      color: #ff69b4;
+      font-size: 20px;
+      animation: drop 10s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes drop {
+      0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 0;
+      }
+      20% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="center-text">
+    Rudra 💖 Swastika <br>
+    Together, Forever 💞
+  </div>
+
+  <!-- Floating hearts -->
+  <div class="heart" style="left: 10%; animation-delay: 0s;"></div>
+  <div class="heart" style="left: 30%; animation-delay: 2s;"></div>
+  <div class="heart" style="left: 50%; animation-delay: 4s;"></div>
+  <div class="heart" style="left: 70%; animation-delay: 1s;"></div>
+  <div class="heart" style="left: 90%; animation-delay: 3s;"></div>
+
+  <!-- Arrow -->
+  <div class="arrow"></div>
+
+  <!-- Heart rain -->
+  <div class="rain-container" id="heartRain"></div>
+
+  <script>
+    const heartRain = document.getElementById('heartRain');
+    const heartEmoji = '💗';
+    const count = 50;
+
+    for (let i = 0; i < count; i++) {
+      let heart = document.createElement('div');
+      heart.classList.add('rain-heart');
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDelay = Math.random() * 10 + 's';
+      heart.style.fontSize = (Math.random() * 15 + 15) + 'px';
+      heart.innerText = heartEmoji;
+      heartRain.appendChild(heart);
+    }
+  </script>
+
+</body>
+</html>
